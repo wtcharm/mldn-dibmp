@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mldn.dibmp.dao.IStorageApplyDAO">
+	<insert id="doCreate" parameterType="StorageApply">
+		INSERT INTO storage_apply(title,pid,cid,wiid,wid,note,status,appmid)
+		VALUES (#{title},#{pid},#{cid},#{wiid},#{wid},#{note},#{status},#{appmid})
+	</insert>
+	<update id="doEditStatus" parameterType="StorageApply">
+		UPDATE storage_apply SET status=#{status} ,apptime=#{apptime} WHERE said=#{said};
+	</update>
+
+	<select id="findBySaid" parameterType="Long" resultType="StorageApply">
+		SELECT said,title,pid,cid,wiid,wid,note,status,appmid
+		FROM storage_apply WHERE said=#{said}
+	</select>
+	
+	<select id="findSplit" parameterType="map" resultType="StorageApply">
+		SELECT said,title,pid,cid,wiid,wid,note,status,appmid
+		FROM storage_apply
+		<where>
+			<if test="column !=null and keyWord != null">
+				${column} like #{keyWord} and
+			</if>
+			appmid = #{appmid}
+		</where>
+		LIMIT #{start},#{lineSize};
+	</select>
+	
+	<select id="CountSplit" resultType="Long" parameterType="map">
+		SELECT count(*) FROM storage_apply 
+		<where>
+				<if test="column !=null and keyWord != null">
+					${column} like #{keyWord} and 
+				</if>
+				appmid = #{appmid}
+		</where>
+	</select>
+	
+	<select id="findAll" resultType="StorageApply">
+		SELECT said,title,pid,cid,wiid,wid,note,status,appmid
+		FROM storage_apply WHERE status=0;
+	</select>
+	
+	<delete id="doDelete" parameterType="java.lang.Long">
+		delete from storage_apply where said = #{said} 
+	</delete>
+	
+</mapper>
