@@ -21,26 +21,27 @@
 			</div>
 			<div class="panel-body">
 				<div>
-					<table class="table table-striped table-bordered table-hover">
+					<table class="table table-striped table-bordered table-hover" id="Output">
 						<tr> 
 							<td style="width:150px;"><strong>出库标题：</strong></td>
-							<td>双13备货</td>
+							<td id="title"></td>
+							
 						</tr>
 						<tr>
 							<td><strong>出库城市：</strong></td>
-							<td>北京市 北京市</td>
+							<td id="city"></td>
 						</tr>
 						<tr>
 							<td><strong>商品数量：</strong></td>
-							<td>223</td>
+							<td id="sum"></td>
 						</tr>
 						<tr>
 							<td><strong>商品总价：</strong></td>
-							<td>￥223.23</td>
+							<td id="count"></td>
 						</tr>
 						<tr>
 							<td><strong>备注信息：</strong></td>
-							<td>我要上</td>
+							<td id="note"></td>
 						</tr>
 					</table>
 				</div>
@@ -57,7 +58,7 @@
 								<th class="text-center" style="width:15%;">操作</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id ="shoplist">
 							<tr id="dettr-1" class="text-success">
 								<td class="text-left">100001</td>
 								<td class="text-left">衣服</td>

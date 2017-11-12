@@ -235,9 +235,10 @@ public class SaleServiceImpl extends AbstractService implements ISaleService {
 		return this.distributionDetailsMapper.findDistributionDetails(gid);
 	}
 	@Override
-	public boolean insert(Distribution vo) {
+	public Long insert(Distribution vo) {
 		// TODO Auto-generated method stub
-		return this.distributionMapper.doCreate(vo);
+		this.distributionMapper.doCreate(vo);
+		return vo.getDsid();
 	}
 	@Override
 	public boolean insertDistributionDetails(DistributionDetails vo) {

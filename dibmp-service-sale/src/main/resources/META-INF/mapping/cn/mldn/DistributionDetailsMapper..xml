@@ -19,8 +19,8 @@
 	
 	<insert id="doCreate">
 	     insert into distribution_details 
-	           (gid,name,num,price,status,wid,outmid) 
+	           (gid,name,num,price,status,wid,outmid,dsid) 
 	     values 
-	           (#{gid},#{name},#{num},#{price},#{status},#{wid},#{outmid});
+	           (#{gid},#{name},#{num},#{price},#{status},#{wid},#{outmid},#{dsid});
 	</insert>
 </mapper>

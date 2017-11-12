@@ -104,7 +104,7 @@ public interface ISaleService {
 	 * @param vo
 	 * @return
 	 */
-	public boolean insert(Distribution vo);
+	public Long insert(Distribution vo);
 	
 	/**
 	 * 增加出库申请详情

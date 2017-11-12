@@ -27,4 +27,14 @@ public class StorgeINputServiceText {
 			 System.err.println("查询的商品数据 aaa--" + map.get("details"));
 		 }
 	}
+	@Test
+	public void listOutputDistributionText() {
+		 Map<String, Object> map = this.inputService.listOutputDistribution(47L);
+		 System.err.println("当前省份信息----" + map.get("allProvince"));
+		 System.err.println("当前城市信息----" + map.get("allCity"));
+		 System.err.println("当前出库申请信息----" + map.get("allOutput"));
+		 System.err.println("当前出出库申请的商品----" + map.get("allOutputShop"));
+	}
+	
+	
 }

@@ -46,13 +46,6 @@ public class GoodsActionBack extends AbstractAction {
 	private static final String TITLE = "商品出库申请单";
     @Resource
     private ISaleService saleServicess;
-    
-    
-    
-    
-    
-    
-    
     @Resource
 	private IWitemService witemService;
 	@Resource
@@ -117,12 +110,6 @@ public class GoodsActionBack extends AbstractAction {
 		}
 		return mav;
 	}
-    
-    
-    
-    
-    
-    
     
     @RequestMapping("list") 
     public ModelAndView list(HttpServletRequest request) {
@@ -256,7 +243,9 @@ public class GoodsActionBack extends AbstractAction {
     	distribution.setGnum(Integer.parseInt(amountSum.get("amounts").toString()));
 		ModelAndView mav = new ModelAndView(super.getPage("forward.page"));
 		boolean flag = false;
-		if(this.saleServicess.insert(distribution)) {
+		long dsid = this.saleServicess.insert(distribution);
+		if(dsid>0) {
+			
 			Map<String, Object> map = this.saleServicess.distributionGoods(mid);
 			List<DistributionDetails> allDistributionDetails = (List<DistributionDetails>) map.get("DistributionDetails");
 			Iterator<DistributionDetails> iter = allDistributionDetails.iterator();
@@ -264,9 +253,11 @@ public class GoodsActionBack extends AbstractAction {
 				DistributionDetails vo = iter.next();
 				vo.setOutmid(mid);
 				vo.setStatus(0);
+				vo.setDsid(dsid);
 				if(this.saleServicess.insertDistributionDetails(vo)) {
 					flag = true;
 					if(flag) {
+						System.err.println("**************************");
 						  RedisUtil.del(mid, vo.getGid().toString());
 					}
 					super.setMsgAndUrl(mav, "distribution.addPre.action", "vo.add.success",TITLE);
@@ -317,6 +308,7 @@ public class GoodsActionBack extends AbstractAction {
 		    		}
 		    	}
 	    		WebUtil.writeJSON(response, "true");
+	    		System.err.println("商品信息——————————————"+ RedisUtil.getKeys());
 	    	}else {
 	    		WebUtil.writeJSON(response, "false");
 	    	}

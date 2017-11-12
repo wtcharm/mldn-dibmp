@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mldn.dibmp.dao.IDistributionDAO">
+	<select id="findByDsid" parameterType="Long" resultType="Distribution">
+		SELECT dsid,title,pid,cid,gnum,price,status,note
+		FROM  distribution
+		WHERE dsid=#{dsid}
+	</select>
+	<select id="findByPid" parameterType="Long" resultType="Province">
+		SELECT pid,title FROM province  WHERE pid=#{pid}
+	</select>
+	<select id="findProvinceAndCit" parameterType="map" resultType="City">
+		SELECT pid,cid,title FROM city  WHERE pid=#{pid} AND cid=#{cid};
+	</select>
+</mapper>

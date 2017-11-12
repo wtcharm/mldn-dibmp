@@ -15,12 +15,23 @@ public class DistributionDetails implements Serializable {
 	private static final long serialVersionUID = -7171107477681043697L;
 	private Long dsdid;
 	private Long gid;
+	private Long dsid;
 	private String name;
 	private int num;
 	private Double price;
 	private int status;
 	private Long wid;
 	private String outmid;
+	
+	public Long getDsid() {
+		return dsid;
+	}
+	public void setDsid(Long dsid) {
+		this.dsid = dsid;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public Long getDsdid() {
 		return dsdid;
 	}

@@ -1,5 +1,4 @@
 $(function(){
-	
 	 said = $("#said").html();
 	 $.post("pages/back/admin/manage/storage_shop.action",{"said":said},function(data){
 		 //console.log(data.details+"长度"+data.details.length);

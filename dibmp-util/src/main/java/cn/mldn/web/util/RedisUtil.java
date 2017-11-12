@@ -182,6 +182,9 @@ public class RedisUtil {
 		put(key, value, gid);
 	}
     
+    
+    
+   
     /**
      * 
      * @param key
@@ -196,7 +199,9 @@ public class RedisUtil {
     			Long gid = iter.next();
     			String keys = "yaojia_"+key+":"+gid;
     			try {
-    				cache.del(keys);
+    				Long y = cache.del(keys);
+    				//cache.del(keys);
+    				System.err.println("yyyyggggggggyyy"+y);
     			}catch(CacheException e) {
     				throw new RuntimeException(e);
     			}finally {

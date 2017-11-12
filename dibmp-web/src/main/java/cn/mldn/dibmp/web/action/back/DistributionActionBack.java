@@ -12,6 +12,7 @@ import cn.mldn.util.web.SplitPageUtil;
 public class DistributionActionBack extends AbstractAction {
 	private static final String TITLE = "商品出库" ;
 	@RequestMapping("goods_list") 
+	
 	public ModelAndView listGoods() {
 		ModelAndView mav = new ModelAndView(super.getPage("distribution.goods.list.page"));
 		return mav;
